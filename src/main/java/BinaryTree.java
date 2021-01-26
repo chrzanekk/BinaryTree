@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class BinaryTree {
     private Node root;
@@ -8,6 +7,10 @@ public class BinaryTree {
 
     public BinaryTree() {
         root = new Node(value);
+    }
+
+    public Node getRoot() {
+        return root;
     }
 
     public void add(int value) {
@@ -103,7 +106,7 @@ public class BinaryTree {
     }
 
     private void postOrder(Node node) {
-        if(node!=null) {
+        if (node != null) {
             postOrder(node.leftNode);
             postOrder(node.rightNode);
             System.out.println(node.value + " ");
@@ -149,42 +152,29 @@ public class BinaryTree {
         currentNode = root;
 
         while (currentNode.leftNode != null && currentNode.rightNode != null) {
-            System.out.println(currentNode.value + "->[" + currentNode.leftNode.value + " " +  currentNode.rightNode.value + "] " );
+            System.out.println(currentNode.value + "->[" + currentNode.leftNode.value + " " + currentNode.rightNode.value + "] ");
             currentNode = currentNode.rightNode;
         }
         return "";
     }
 
-
-
-
-//
-//    public void add(int value) {
-//        root = addRecursive(root, value);
-//    }
-//
-
-//
-//
-
-//
-
-//
-//    private Node addRecursive(Node current, int value) {
-//        if (current == null) {
-//            return new Node(value);
-//        }
-//
-//        if (value < current.value) {
-//            current.leftNode = addRecursive(current.leftNode, value);
-//        } else if (value > current.value) {
-//            current.rightNode = addRecursive(current.rightNode, value);
-//        } else {
-//            return current;
-//        }
-//        return current;
-//    }
-
+    public int calculateSum(Node node) {
+        int sum = 0;
+        int sumLeftNode = 0;
+        int sumRightNode = 0;
+                if (root == null) {
+            return 0;
+        } else {
+            if (node.leftNode != null) {
+                sumLeftNode = calculateSum(node.leftNode);
+            }
+            if (node.rightNode != null) {
+                sumRightNode = calculateSum(node.rightNode);
+            }
+        }
+        sum = node.value + sumLeftNode + sumRightNode;
+        return sum;
+    }
 
     class Node {
         private int value;
