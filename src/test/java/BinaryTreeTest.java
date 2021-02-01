@@ -4,16 +4,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BinaryTreeTest {
-    BinaryTree binaryTree = new BinaryTree();
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
+    private BinaryTree binaryTree = BinaryTree.createBinaryTree();
 
     @Test
     public void testBinaryTreeContainsValueAndValueExists() {
-        binaryTree = binaryTree.createBinaryTree();
+
         int value = 5;
 
         boolean result = binaryTree.containsNode(value);
@@ -23,7 +18,6 @@ public class BinaryTreeTest {
 
     @Test
     public void testBinaryTreeContainsValueAndValueDoesNotExists() {
-        binaryTree = binaryTree.createBinaryTree();
         int value = 7;
 
         boolean result = binaryTree.containsNode(value);
@@ -33,10 +27,9 @@ public class BinaryTreeTest {
 
     @Test
     public void testBinaryTreeCalculateSumOfElements() {
-        binaryTree = binaryTree.createBinaryTree();
-        int value = 77;
+        int value = 87;
 
-        int result = binaryTree.calculateSum(binaryTree.getRoot());
+        int result = binaryTree.calculateSum();
 
         assertEquals(value,result);
     }

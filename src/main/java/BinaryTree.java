@@ -2,11 +2,11 @@
 
 public class BinaryTree {
     private Node root;
-    private int value;
     private int size = 0;
 
-    public BinaryTree() {
+    public BinaryTree(int value) {
         root = new Node(value);
+        size++;
     }
 
     public Node getRoot() {
@@ -48,8 +48,8 @@ public class BinaryTree {
     }
 
 
-    public BinaryTree createBinaryTree() {
-        BinaryTree binaryTree = new BinaryTree();
+    public static BinaryTree createBinaryTree() {
+        BinaryTree binaryTree = new BinaryTree(10);
         binaryTree.add(5);
         binaryTree.add(10);
         binaryTree.add(15);
@@ -158,11 +158,11 @@ public class BinaryTree {
         return "";
     }
 
-    public int calculateSum(Node node) {
+    private int calculateSum(Node node) {
         int sum = 0;
         int sumLeftNode = 0;
         int sumRightNode = 0;
-                if (root == null) {
+        if (node == null) {
             return 0;
         } else {
             if (node.leftNode != null) {
@@ -176,6 +176,10 @@ public class BinaryTree {
         return sum;
     }
 
+    public int calculateSum() {
+        return calculateSum(root);
+    }
+
     class Node {
         private int value;
         private Node leftNode;
@@ -183,8 +187,6 @@ public class BinaryTree {
 
         Node(int value) {
             this.value = value;
-            leftNode = null;
-            rightNode = null;
         }
     }
 }
